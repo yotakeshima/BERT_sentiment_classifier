@@ -4,6 +4,7 @@ from src.evaluate import evaluate_model
 from src.predict import predict_sentiment
 from src.train import split_data
 from src.utils import check_model
+from src.predictor import SentimentPredictor
 from transformers import logging
 
 
@@ -28,22 +29,16 @@ if __name__ == "__main__":
         evaluate_model("assets/training_data/test.csv", "model/bert_sentiment_model.pt")
         print("\n Training and evualuation completed")
     else:
-        load_model:
+        predictor = SentimentPredictor(model_dir="model")
         while True:
             # Predict a User Input sentence sentiment
-            print("\nEnter a sentence to predict sentiment:")
+            print("\nEnter a sentence to predict sentiment (q = exit):")
             input_text = input("Sentence: ").strip()
             if os.path.exists("model/bert_sentiment_model.pt"):
-                sentiment = predict_sentiment(input_text, "model")
-                print(f"Prediction: {sentiment}")
-            elif:
-                print("Error: Trained model not found. Please train the model first.")
-
-            elif: choice == "q":
-                print("Exiting program")
-                break
-            else:
-                print("Invalid choice. Please enter 1, 2, or 'q'.")
+                if input_text.lower() == 'q':
+                    break
+                sentiment = predictor.predict(input_text)
+                print(f"Prediction: The overall sentiment of this sentence is {sentiment}")
    
    
    
