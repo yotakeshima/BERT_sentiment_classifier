@@ -18,7 +18,7 @@ This project implements a sentiment analysis model using **BERT (Bidirectional E
 ├── src/                    # Main scripts for training & prediction
 ├── main.py                 # Entry point to train or predict sentiment
 ├── requirements.txt        # Dependencies list
-└── ReadMe.MD               # Project documentation
+└── README.md               # Project documentation
 ```
 
 ## 📊 Dataset
