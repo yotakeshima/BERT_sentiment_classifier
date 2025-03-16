@@ -1,90 +1,78 @@
-# DevConnector
+# Sentiment Analysis with BERT
 
-DevConnector is a full-stack social networking platform for developers, built using the MERN (MongoDB, Express.js, React, Node.js) stack. It allows developers to create profiles, connect with others, share posts, and engage in discussions.
+## 📌 Overview
+This project implements a sentiment analysis model using **BERT (Bidirectional Encoder Representations from Transformers)**. It classifies text as **positive** or **negative** based on Amazon reviews.
 
-## Features
+## 🚀 Features
+- **Data Processing**: Extracts and cleans review data from a JSONL file.
+- **Model Training**: Fine-tunes BERT for sentiment classification.
+- **Evaluation**: Computes accuracy on test and validation sets.
+- **Prediction**: Allows real-time sentiment analysis on user-inputted text.
 
-- User authentication and authorization using JWT
-- Profile creation with work experience and education details
-- Ability to add social media links to the profile
-- Post creation, liking, and commenting functionalities
-- Developer profiles browsing and searching
-- Backend API built with Node.js and Express
-- MongoDB as the database with Mongoose ODM
-- Frontend developed using React with Redux for state management
+## 📂 Project Structure
+```
+📦 sentiment-analysis-bert
+├── assets/                 # Processed datasets
+├── data_processing/        # Scripts for data loading & label creation
+├── model/                  # Trained model & tokenizer
+├── src/                    # Main scripts for training & prediction
+├── main.py                 # Entry point to train or predict sentiment
+├── requirements.txt        # Dependencies list
+└── ReadMe.MD               # Project documentation
+```
 
-## Technologies Used
+## 📊 Dataset
+The dataset consists of **Amazon product reviews**, extracted and processed through:
+1. `load_data.py`: Filters reviews based on ASIN.
+2. `create_labels.py`: Assigns sentiment labels based on review ratings.
 
-### Frontend:
+| Rating | Sentiment |
+|--------|----------|
+| 1-2    | Negative |
+| 3+     | Positive |
 
-- React.js
-- Redux
-- Axios
-- Bootstrap
+## 🛠 Installation
+### Prerequisites
+- Python 3.8+
+- Pip package manager
 
-### Backend:
+### Install Dependencies
+Run the following command to install all required libraries:
+```bash
+pip install -r requirements.txt
+```
 
-- Node.js
-- Express.js
-- MongoDB & Mongoose
-- JSON Web Token (JWT)
-- bcrypt.js for password hashing
+## 🔥 Usage
+### Train the Model
+To train the model from scratch:
+```bash
+python main.py --train
+```
 
-## Installation
+### Predict Sentiment
+To use a pre-trained model for sentiment analysis:
+```bash
+python main.py --predict
+```
+You will be prompted to enter text for prediction.
 
-### Prerequisites:
+### Example Output
+```
+Enter a sentence to predict sentiment (q = exit):
+Sentence: I love this product, it works great!
+Prediction: The overall sentiment of this sentence is Positive
+```
 
-- Node.js installed
-- MongoDB installed and running
+## 📌 Notes
+- If a pre-trained model exists, the script loads it automatically.
+- If no model is found, training begins by default.
 
-### Steps:
+## 🔍 Future Enhancements
+- Support for **neutral sentiment classification**.
+- Integration with **a web-based UI** for real-time analysis.
 
-1. Clone the repository:
+## 📜 License
+This project is licensed under the **MIT License**.
 
-   ```sh
-   git clone https://github.com/your-username/devconnector.git
-   cd devconnector
-   ```
-
-2. Install dependencies:
-
-   ```sh
-   npm install
-   cd client
-   npm install
-   ```
-
-3. Set up environment variables: Create a `.env` file in the root directory and add:
-
-   ```env
-   MONGO_URI=your_mongodb_connection_string
-   JWT_SECRET=your_jwt_secret
-   ```
-
-4. Start the development server:
-
-   ```sh
-   npm run dev
-   ```
-
-   This will run both the frontend and backend concurrently.
-
-## Usage
-
-- Register an account and log in.
-- Create and edit your developer profile.
-- View other developers' profiles and connect with them.
-- Share posts, like, and comment on them.
-
-## Contributing
-
-Contributions are welcome! Feel free to open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License.
-
-## Contact
-
-If you have any questions or issues, feel free to reach out via GitHub issues or contact me at [[your-email@example.com](mailto\:your-email@example.com)].
-
+---
+💡 **Contributions & Issues**: Feel free to submit pull requests or report bugs!
